@@ -1,0 +1,1 @@
+Terraform module that provides a quick way of creating a linode instance and a DNS record with cloudflare to make accessing it easy without having to remember the public IP or keep a note of it.
