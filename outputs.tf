@@ -1,9 +1,8 @@
 output "root_password_identifier" {
   #Root password should be placed in secret storage, and then the secret storage location output here
 
-  value = random_password.password.result
-  sensitive = true
-  description = "The root password to the instance"
+  value = var.label
+  description = "The path to the root password in vault"
 }
 
 output "ssh_key"{

@@ -12,6 +12,17 @@ terraform {
   }
 }
 
+provider "vault" {
+  auth_login {
+    path = "auth/approle/login"
+
+    parameters = {
+      role_id   = var.login_approle_role_id
+      secret_id = var.login_approle_secret_id
+    }
+  }
+}
+
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
@@ -47,6 +58,24 @@ data "linode_instance_types" "specific-types" {
   }
 }
 
+resource "vault_mount" "kvv2" {
+  path        = "kvv2"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "KV Version 2 secret engine mount"
+}
+
+resource "vault_kv_secret_v2" "example" {
+  mount               = vault_mount.kvv2.path
+  name                = var.label
+  cas                 = 1
+  delete_all_versions = true
+  data_json = jsonencode(
+    {
+      root_password = random_password.password.result
+    }
+  )
+}
 
 resource "random_password" "password" {
   length           = 16

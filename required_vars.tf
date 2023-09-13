@@ -1,3 +1,6 @@
+variable login_approle_role_id {}
+variable login_approle_secret_id {}
+
 variable "cloudflare_api_token" {
   description = ""
   type = string
