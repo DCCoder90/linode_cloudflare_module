@@ -1,0 +1,12 @@
+name: Test
+on: [push]
+jobs:
+  validate-terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: rhythmictech/actions-setup-tfenv@v0.0.2
+
+      - run: tfenv install
+      - run: terraform init
+      - run: terraform validate
