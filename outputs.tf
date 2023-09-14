@@ -1,7 +1,5 @@
 output "root_password_identifier" {
-  #Root password should be placed in secret storage, and then the secret storage location output here
-
-  value = var.label
+  value = vault_kv_secret_v2.instance_root_password.path
   description = "The path to the root password in vault"
 }
 
@@ -11,6 +9,6 @@ output "ssh_key"{
 }
 
 output "dns" {
-  value = "${cloudflare_record.example.name}.${var.domain}"
+  value = "${cloudflare_record.instance_record.name}.${var.domain}"
   description = "The subdomain the new resource is located"
 }

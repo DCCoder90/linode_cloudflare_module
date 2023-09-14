@@ -1,29 +1,14 @@
-variable login_approle_role_id {}
-variable login_approle_secret_id {}
-
-variable "cloudflare_api_token" {
-  description = ""
+variable login_approle_role_id {
+  description = "The approle id to authorize this module to pull secrets from Vault"
   type = string
-  sensitive = true
 }
 
-variable "linode_api_token" {
-  description = ""
+variable login_approle_secret_id {
+  description = "The approle secret id to authorize this module to pull secrets from Vault"
   type = string
-  sensitive = true
 }
 
 variable "label"{
-  description = ""
-  type = string
-}
-
-variable "domain" {
-  description = ""
-  type = string
-}
-
-variable "ssh_key"{
-  description = ""
+  description = "The label to apply to the new instance, this will also be the subdomain. eg. example will become example.domain.com"
   type = string
 }
