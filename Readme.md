@@ -8,13 +8,13 @@ Path: `kvv2`
 Secret: path/label
 
 # Module Documentation
-
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4.0 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.14.0 |
 | <a name="requirement_linode"></a> [linode](#requirement\_linode) | 2.7.2 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.5.1 |
 | <a name="requirement_vault"></a> [vault](#requirement\_vault) | 3.20.0 |
 
 ## Providers
@@ -34,12 +34,12 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cloudflare_record.instance_record](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_record.instance_record](https://registry.terraform.io/providers/cloudflare/cloudflare/4.14.0/docs/resources/record) | resource |
 | [linode_instance.web](https://registry.terraform.io/providers/linode/linode/2.7.2/docs/resources/instance) | resource |
-| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/password) | resource |
 | [vault_kv_secret_v2.instance_root_password](https://registry.terraform.io/providers/hashicorp/vault/3.20.0/docs/resources/kv_secret_v2) | resource |
 | [vault_mount.kvv2](https://registry.terraform.io/providers/hashicorp/vault/3.20.0/docs/resources/mount) | resource |
-| [cloudflare_zone.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zone) | data source |
+| [cloudflare_zone.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/4.14.0/docs/data-sources/zone) | data source |
 | [linode_images.specific-images](https://registry.terraform.io/providers/linode/linode/2.7.2/docs/data-sources/images) | data source |
 | [linode_instance_types.specific-types](https://registry.terraform.io/providers/linode/linode/2.7.2/docs/data-sources/instance_types) | data source |
 | [linode_sshkey.foo](https://registry.terraform.io/providers/linode/linode/2.7.2/docs/data-sources/sshkey) | data source |
@@ -60,6 +60,7 @@ No modules.
 | <a name="input_provider_auth_secrets_path"></a> [provider\_auth\_secrets\_path](#input\_provider\_auth\_secrets\_path) | Path to the provider authorization secrets in Vault | `string` | `"kvv2/provider"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The linode region to stand up the instance in | `string` | `"us-southeast"` | no |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | The SSH key to add to the linode instance | `string` | `"Default"` | no |
+| <a name="input_vault_address"></a> [vault\_address](#input\_vault\_address) | Address to access vault | `string` | `"http://vault.dccapp.io:8200"` | no |
 
 ## Outputs
 
