@@ -1,11 +1,25 @@
-Terraform module that provides a quick way of creating a linode instance and a DNS record with cloudflare to make accessing it easy without having to remember the public IP or keep a note of it.
+Considering that I do a lot of expiramentation using linode and I have a domain set up for my simple projects, I decided to make the creation of these resources a little easier and create a terraform module.
 
+This module creates a linode instance and creates a DNS record under the specified domain in cloudflare to allow for easy access.  Credentials such as the [Cloudflare API key](https://developers.cloudflare.com/api/), [Linode PAT](https://www.linode.com/docs/api/), or the root password for created instances are never shown or stored.  These are kept inside of a [Vault instance](https://www.hashicorp.com/products/vault). 
+
+This module could be updated to use any secret storage, but I chose to go with Vault due to my familiarity and not wanting to bring in yet another provider into this.
 
 ## Vault Configuration
 
-Path: `kvv2`
+Prior to running this module an instance of [Hashicorp Vault](https://www.hashicorp.com/products/vault) must be accessbile to this module.  Vault is where the module will retrieve the credentials it needs to access Cloudflare and Linode.
 
-Secret: path/label
+By default, this module makes use of the [KV secrets engine - V2](https://developer.hashicorp.com/vault/docs/secrets/kv/kv-v2).  Follow the documentation to get it set up.  Next by default the module is going to look under `kvv2/provider` for the secrets.
+
+The secrets should be formatted in a manner as such:
+
+```json
+{
+  "linode": "LINODE PAT",
+  "cloudflare": "CLOUDFLARE API KEY"
+}
+```
+
+Once vault is configured you can begin using the module.  See the documentation below for details on how to use it.
 
 # Module Documentation
 ## Requirements
