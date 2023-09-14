@@ -1,3 +1,9 @@
+variable "vault_address"{
+  description = "Address to access vault"
+  type = string
+  default = "http://vault.dccapp.io:8200"
+}
+
 variable "instance_type" {
   description = "The type of instance to stand up"
   type = string
